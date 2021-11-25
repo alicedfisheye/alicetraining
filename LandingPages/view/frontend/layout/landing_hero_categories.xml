@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Fisheye Media Ltd. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="landing_hero"/>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="label" xsi:type="string">Hero Page: Product &amp; Categories</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <container name="my-categories" as="my.categories" after="my-product">
+                <block
+                    class="Alice\LandingPages\Block\FeaturedCategories"
+                    name="featured-categories"
+                    template="Alice_LandingPages::categories.phtml"
+                    as="featured.categories"
+                />
+            </container>
+        </referenceContainer>
+    </body>
+</page>

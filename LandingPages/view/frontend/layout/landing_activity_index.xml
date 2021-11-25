@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Fisheye Media Ltd. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="landing-page-layout"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="label" xsi:type="string">Products By Activity</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block name="products-by-activity" template="Alice_LandingPages::activities.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Alice\LandingPages\ViewModel\ProductsByActivity</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

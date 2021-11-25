@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © Fisheye Media Ltd. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+
+use Magento\Framework\App\Action\Action;
+
+/**
+ * Product list template
+ *
+ * @var $block \Alice\LandingPages\Block\FeaturedCategories
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+$categories = $block->getCategories(2, 3, 'name');
+?>
+
+<?php foreach($categories as $category): ?>
+    <a href="<?= $escaper->escapeUrl($category->getUrl()) ?>">
+        <p><?= $escaper->escapeHtml(__('Name: %1', $category->getName()))?></p>
+    </a>
+<?php endforeach; ?>

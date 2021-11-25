@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Fisheye Media Ltd. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="landing-page-layout"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="landing_hero_categories"/>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="label" xsi:type="string">Hero Page: Custom Layout</argument>
+            </action>
+        </referenceBlock>
+        <move element="my-categories" destination="additional" />
+        <referenceContainer name="additional" htmlTag="div" htmlClass="look at these classes" htmlId="im-an-id"/>
+    </body>
+</page>

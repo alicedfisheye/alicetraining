@@ -1,0 +1,43 @@
+<?php
+/**
+ * Copyright © Fisheye Media Ltd. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+
+use Magento\Framework\App\Action\Action;
+
+/**
+ * Product list template
+ *
+ * @var $block \Alice\LandingPages\Block\MyProduct
+ * @var \Magento\Framework\Escaper $escaper
+ * @var $viewModel \Alice\LandingPages\ViewModel\ProductsByActivity
+ */
+
+$viewModel = $block->getViewModel();
+$products = $viewModel->getProductCollection(12, 'name');
+$activity = $viewModel->getActivity();
+?>
+<div style="display: flex; flex-direction: row;">
+    <?php if (count($products) > 0 && !is_null($activity)): ?>
+        <?php foreach ($products as $product): ?>
+            <a href="<?= $escaper->escapeUrl($product->getProductUrl()) ?>">
+                <p><?= $escaper->escapeHtml(__('Name: %1', $product->getName())) ?></p>
+                <p><?= $escaper->escapeHtml(__('SKU: %1', $product->getSku())) ?></p>
+                <p><?= $escaper->escapeHtml(__('Name: %1', $product->getName())) ?></p>
+                <p><?= $escaper->escapeHtml(__('Activity: %1', $viewModel->getAttributeLabel($product, 'activity'))) ?></p>
+                <p><?= $escaper->escapeHtml(__('Price: ')); ?>
+                    <?= $viewModel->formatPrice($product->getFinalPrice()) ?></p>
+                <img src="<?= $viewModel->getProductImageUrl($product, 'product_page_image_small') ?>"
+                     alt="<?= $escaper->escapeHtml(__('Product Image')) ?>"
+                     width="200"
+                     height="200"
+                />
+            </a>
+        <?php endforeach; ?>
+    <?php elseif (is_null($activity)): ?>
+        <p><?= $escaper->escapeHtml(__('Add the activity into the URL to get products by activity.')) ?></p>
+    <?php else: ?>
+        <p><?= $escaper->escapeHtml(__('Nothing matched your selection.')) ?></p>
+    <?php endif; ?>
+</div>
